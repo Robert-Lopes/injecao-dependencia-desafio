@@ -27,7 +27,7 @@ public class DesafioApplication implements CommandLineRunner {
 		Scanner sc = new Scanner(System.in);
 	
 		Integer code = sc.nextInt();
-		System.out.println("Pedido número: " + code);
+
 
 		Double basic = sc.nextDouble();
 		orderService.setBasic(basic);
@@ -35,6 +35,7 @@ public class DesafioApplication implements CommandLineRunner {
 		Double discount = sc.nextDouble();
 		orderService.setDiscount(discount);
 
+		System.out.println("Pedido código: " + code);
 		System.out.println("Valor total: R$ " + orderService.total());
 
 		sc.close();
