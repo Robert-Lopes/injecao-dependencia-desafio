@@ -17,7 +17,7 @@ public class OrderService {
 
 
     public Double total(){
-        return basic - discount + this.shippingService.shipment(this);
+        return getFinalOrderValue() + this.shippingService.shipment(this);
     }
     
     // ---------- GETTERS 
@@ -33,6 +33,9 @@ public class OrderService {
         return discount;
     }
 
+    public Double getFinalOrderValue(){
+        return basic - (discount/100.0) * basic;
+    }
     
     // ---------- SETTERS
     
@@ -47,4 +50,6 @@ public class OrderService {
     public void setDiscount(Double discount){
         this.discount = discount;
     }
+
+
 }
