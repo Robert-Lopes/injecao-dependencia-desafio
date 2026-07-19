@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.salario.desafio.entities.Order;
 import com.salario.desafio.services.OrderService;
 
 @SpringBootApplication
@@ -25,18 +26,19 @@ public class DesafioApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
-	
+		
+		Order order = new Order();
+
 		Integer code = sc.nextInt();
 
-
 		Double basic = sc.nextDouble();
-		orderService.setBasic(basic);
+		order.setBasic(basic);
 
 		Double discount = sc.nextDouble();
-		orderService.setDiscount(discount);
+		order.setDiscount(discount);
 
 		System.out.println("Pedido código: " + code);
-		System.out.println("Valor total: R$ " + orderService.total());
+		System.out.printf("Valor total: R$ %.2f%n", orderService.total(order));
 
 		sc.close();
 	}
